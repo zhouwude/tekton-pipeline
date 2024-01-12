@@ -5,6 +5,7 @@ metadata:
 spec:
   params:
   - name: username
+  - name: wife
   tasks:
   - name: task-1
     params:
@@ -17,3 +18,14 @@ spec:
       - image: alpine:3.15
         script: |
           echo "hello $(params.username)"
+  - name: task-2
+    params:
+    - name: wife
+      value: $(params.wife)
+    taskSpec:
+      params:
+      - name: wife
+      steps:
+      - image: alpine:3.15
+        script: |
+          echo "hello $(params.wife)"
